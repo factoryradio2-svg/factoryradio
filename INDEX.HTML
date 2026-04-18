@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Factory Radio</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;600&display=swap" rel="stylesheet">
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+    background: radial-gradient(circle at top, #1a1a1a, #000);
+    color: white;
+    text-align: center;
+}
+
+.container {
+    margin-top: 10%;
+}
+
+.logo {
+    width: 180px;
+    margin-bottom: 20px;
+    filter: drop-shadow(0 0 10px red);
+}
+
+h1 {
+    font-size: 2.8em;
+    letter-spacing: 2px;
+}
+
+.live {
+    color: #ff1744;
+    font-size: 14px;
+    margin-bottom: 20px;
+    animation: blink 1s infinite;
+}
+
+@keyframes blink {
+    50% { opacity: 0.3; }
+}
+
+.controls {
+    margin-top: 20px;
+}
+
+button {
+    width: 70px;
+    height: 70px;
+    margin: 10px;
+    border-radius: 50%;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.play {
+    background: linear-gradient(45deg, #00c853, #69f0ae);
+    color: white;
+}
+
+.stop {
+    background: linear-gradient(45deg, #d50000, #ff5252);
+    color: white;
+}
+
+button:hover {
+    transform: scale(1.1);
+}
+
+.volume {
+    margin-top: 20px;
+}
+
+input[type="range"] {
+    width: 200px;
+}
+
+.footer {
+    position: fixed;
+    bottom: 10px;
+    width: 100%;
+    font-size: 12px;
+    opacity: 0.4;
+}
+</style>
+
+</head>
+<body>
+
+<div class="container">
+
+    <img src="logo.png" class="logo">
+
+    <h1>FACTORY RADIO</h1>
+    <div class="live">🔴 EN VIVO</div>
+
+    <div class="controls">
+        <button class="play" onclick="playRadio()">▶</button>
+        <button class="stop" onclick="stopRadio()">⏹</button>
+    </div>
+
+    <div class="volume">
+        🔊 Volumen<br>
+        <input type="range" min="0" max="1" step="0.1" value="1" onchange="setVolume(this.value)">
+    </div>
+
+</div>
+
+<audio id="radio" preload="none"></audio>
+
+<div class="footer">
+    DJ TONNYSUCKO • Factory Radio
+</div>
+
+<script>
+let radio = document.getElementById("radio");
+
+// ⚠️ IMPORTANTE: ajusta si tu stream real es diferente
+radio.src = "https://factoryradiooficial.radio12345.com/";
+
+function playRadio() {
+    radio.play();
+}
+
+function stopRadio() {
+    radio.pause();
+}
+
+function setVolume(value) {
+    radio.volume = value;
+}
+</script>
+
+</body>
+</html>
